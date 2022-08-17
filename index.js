@@ -39,14 +39,6 @@ const background = new Sprite({
     image: image // setting image equal to our game map 
 })
 
-
-/*Create a new repository on the command line
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/neetigyachahar/codebox.git
-git push -u origin main*/ 
 const keys = {
     w: {
         pressed: false
@@ -102,44 +94,54 @@ function animate(){
         ) 
 
         // player movement
-        if (keys.w.pressed || keys.ArrowUp.pressed) background.position.y += 3 
-        else if (keys.a.pressed || keys.ArrowLeft.pressed) background.position.x += 3 
-        else if (keys.s.pressed || keys.ArrowDown.pressed) background.position.y -= 3 
-        else if (keys.d.pressed || keys.ArrowRight.pressed) background.position.x -= 3 
+        if ((keys.w.pressed && lastKey === 'w') || (keys.ArrowUp.pressed && lastKey ==='ArrowUp') ) background.position.y += 3 
+        else if ((keys.a.pressed && lastKey ==='a') || (keys.ArrowLeft.pressed && lastKey ==='ArrowLeft')) background.position.x += 3 
+        else if ((keys.s.pressed && lastKey ==='s') || (keys.ArrowDown.pressed && lastKey ==='ArrowDown')) background.position.y -= 3 
+        else if ((keys.d.pressed && lastKey ==='d') || (keys.ArrowRight.pressed && lastKey ==='ArrowRight')) background.position.x -= 3 
         
 
 }
 animate()
+
+let lastKey = ''
 
 // for when key is pressed down
 window.addEventListener('keydown', (e) => {
     switch(e.key){
         case 'w':
             keys.w.pressed = true
+            lastKey = 'w'
             break
         case 'ArrowUp':
             keys.ArrowUp.pressed = true
+            lastKey = 'ArrowUp'
             break    
 
         case 'a':
             keys.a.pressed = true
+            lastKey = 'a'
             break
         case 'ArrowLeft':
             keys.ArrowLeft.pressed = true
+            lastKey = 'ArrowLeft'
             break    
 
         case 's':
             keys.s.pressed = true
+            lastKey = 's'
             break
         case 'ArrowDown':
             keys.ArrowDown.pressed = true
+            lastKey = 'ArrowDown'
             break    
 
         case 'd':
             keys.d.pressed = true
+            lastKey = 'd'
             break
         case 'ArrowRight':
             keys.ArrowRight.pressed = true
+            lastKey = 'ArrowRight'
             break    
 
 
